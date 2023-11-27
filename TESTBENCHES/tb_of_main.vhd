@@ -1,3 +1,4 @@
+-- Testbench de Main
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
@@ -36,7 +37,7 @@ architecture behavior of main_tb is
 
 begin
     -- Instanciar el componente principal
-    dut: main port map (
+    uut: main port map (
         clk100Mhz => clk100Mhz_tb,
         UP_IN => UP_IN_tb,
         DOP_IN => DOP_IN_tb,
@@ -51,30 +52,125 @@ begin
     );
 
     -- Proceso para generar el reloj
-    process
+    Clk : process
     begin
-        wait for 5 ns; -- Ajustar según la frecuencia deseada
+        wait for 1 ns; -- Ajustar según la frecuencia deseada
         clk100Mhz_tb <= not clk100Mhz_tb;
     end process;
 
-    -- Proceso de estimulación (Ejemplo: pulsar un botón después de un tiempo)
+    -- Proceso de prueba (Ejemplo: Ingresar una moneda, escoger un producto y confirmar la compra)
     process
     begin
-        wait for 20 ns;
         UP_IN_tb <= '1';
+        wait for 5 ns;
+        UP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '1';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '1';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        PRODUCT_IN_tb <= "00010";
+        wait for 20 ns;
+       	CONF_COMPRA_IN_tb <= '1';
         wait for 10 ns;
         UP_IN_tb <= '0';
-        wait;
+        wait for 5 ns;
+        UP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '1';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        PRODUCT_IN_tb <= "00001";
+        wait for 20 ns;
+       	CONF_COMPRA_IN_tb <= '0';
+        wait for 10 ns;
+        UP_IN_tb <= '1';
+        wait for 5 ns;
+        UP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        PRODUCT_IN_tb <= "10000";
+        wait for 20 ns;
+       	CONF_COMPRA_IN_tb <= '0';
+        wait for 10 ns;
+        UP_IN_tb <= '1';
+        wait for 5 ns;
+        UP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        PRODUCT_IN_tb <= "10000";
+        wait for 20 ns;
+       	CONF_COMPRA_IN_tb <= '1';
+        wait for 10 ns;
+        UP_IN_tb <= '1';
+        wait for 5 ns;
+        UP_IN_tb <= '0';
+        wait for 5 ns;
+        DOP_IN_tb <= '1';
+        wait for 5 ns;
+        DOP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        CP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        DP_IN_tb <= '0';
+        wait for 5 ns;
+        PRODUCT_IN_tb <= "10110";
+        wait for 20 ns;
+       	CONF_COMPRA_IN_tb <= '1';
+        wait for 10 ns;
+        
+        -- Run Time: 1000 ns
+	
+        
     end process;
 
     -- Agregar más procesos de estimulación según sea necesario
-
-    -- Proceso de observación (opcional)
-    process
-    begin
-        wait for 50 ns;
-        -- Puedes agregar aquí las aserciones o imprimir valores para observar resultados
-        wait;
-    end process;
 
 end behavior;
