@@ -1,0 +1,52 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 17 08:16:44 2023
+# Process ID: 12356
+# Current directory: D:/Users/178633/Desktop/maquinaExpendedora_v1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21600 D:\Users\178633\Desktop\maquinaExpendedora_v1\maquinaExpendedora_v1.xpr
+# Log file: D:/Users/178633/Desktop/maquinaExpendedora_v1/vivado.log
+# Journal file: D:/Users/178633/Desktop/maquinaExpendedora_v1\vivado.jou
+# Running On: PCCN111-04, OS: Windows, CPU Frequency: 3000 MHz, CPU Physical cores: 8, Host memory: 16943 MB
+#-----------------------------------------------------------
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es_revb:part0:1.0 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120_revb/es/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at D:/Vivado/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+open_project D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.xpr
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/Vivado/2022.1/data/ip'.
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:21 . Memory (MB): peak = 1653.691 ; gain = 78.543
+update_compile_order -fileset sources_1
+close [ open D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new/estados_dispensador.vhd w ]
+add_files D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new/estados_dispensador.vhd
+update_compile_order -fileset sources_1
+scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/Vivado/2022.1/data/ip'.
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 17 08:28:52 2023...
+00:00:07 . Memory (MB): peak = 1686.133 ; gain = 0.000
+update_compile_order -fileset sources_1
+reset_run synth_1
+INFO: [Project 1-1160] Copying file D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.runs/synth_1/COUNT_99.dcp to D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.srcs/utils_1/imports/synth_1 and adding it to utils fileset
+launch_runs synth_1 -jobs 8
+[Fri Nov 17 08:30:22 2023] Launched synth_1...
+Run output will be captured here: D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.runs/synth_1/runme.log
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.srcs/utils_1/imports/synth_1/COUNT_99.dcp with file D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.runs/synth_1/COUNT_99.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/Users/178633/Desktop/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2/dosDisplays7Segmentos_v2.runs/synth_1
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 17 08:31:21 2023...

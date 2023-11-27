@@ -1,0 +1,148 @@
+/*
+
+Xilinx Vivado v2022.1 (64-bit) [Major: 2022, Minor: 1]
+SW Build: 3526262 on Mon Apr 18 15:48:16 MDT 2022
+IP Build: 3524634 on Mon Apr 18 20:55:01 MDT 2022
+
+Process ID (PID): 12224
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Fri Nov 17 08:17:10 GMT-06:00 2023
+Time zone: 	GMT-06:00 (GMT-06:00)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	D:/Vivado/Vivado/2022.1/tps/win64/jre11.0.11_9
+Java executable: 	D:/Vivado/Vivado/2022.1/tps/win64/jre11.0.11_9/bin/java.exe
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Dsun.java2d.d3d=false, -Dsun.awt.nopixfmt=true, -Dsun.java2d.dpiaware=true, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	178633
+User home directory: D:/Users/178633
+User working directory: D:/Users/178633/Desktop/maquinaExpendedora_v1
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: D:/Vivado/Vivado
+HDI_APPROOT: D:/Vivado/Vivado/2022.1
+RDI_DATADIR: D:/Vivado/Vivado/2022.1/data
+RDI_BINDIR: D:/Vivado/Vivado/2022.1/bin
+
+Vivado preferences file: D:/Users/178633/AppData/Roaming/Xilinx/Vivado/2022.1/vivado.xml
+Vivado preferences directory: D:/Users/178633/AppData/Roaming/Xilinx/Vivado/2022.1/
+Vivado layouts directory: D:/Users/178633/AppData/Roaming/Xilinx/Vivado/2022.1/data/layouts
+PlanAhead jar file: 	D:/Vivado/Vivado/2022.1/lib/classes/planAhead.jar
+Vivado log file: 	D:/Users/178633/Desktop/maquinaExpendedora_v1/vivado.log
+Vivado journal file: 	D:/Users/178633/Desktop/maquinaExpendedora_v1/vivado.jou
+Engine tmp dir: 	D:/Users/178633/Desktop/maquinaExpendedora_v1/.Xil/Vivado-12224-PCCN111-04
+
+Xilinx Environment Variables
+----------------------------
+XILINX: D:/Vivado/Vivado/2022.1/ids_lite/ISE
+XILINX_DSP: D:/Vivado/Vivado/2022.1/ids_lite/ISE
+XILINX_HLS: D:/Vivado/Vitis_HLS/2022.1
+XILINX_PLANAHEAD: D:/Vivado/Vivado/2022.1
+XILINX_VIVADO: D:/Vivado/Vivado/2022.1
+XILINX_VIVADO_HLS: D:/Vivado/Vivado/2022.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,421 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 80 MB (+81442kb) [00:00:30]
+// [Engine Memory]: 1,386 MB (+1302002kb) [00:00:30]
+// Opening Vivado Project: D:\Users\178633\Desktop\maquinaExpendedora_v1\maquinaExpendedora_v1.xpr. Version: Vivado v2022.1 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.xpr 
+// Tcl Message: INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.gen/sources_1'. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 106 MB (+22736kb) [00:00:44]
+// WARNING: HEventQueue.dispatchEvent() is taking  17824 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/Vivado/2022.1/data/ip'. 
+// [GUI Memory]: 117 MB (+6715kb) [00:00:52]
+// [Engine Memory]: 1,482 MB (+28061kb) [00:00:52]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,485 MB. GUI used memory: 66 MB. Current time: 11/17/23, 8:17:29 AM GMT-06:00
+// Tcl Message: open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:21 . Memory (MB): peak = 1653.691 ; gain = 78.543 
+// Project name: maquinaExpendedora_v1; location: D:/Users/178633/Desktop/maquinaExpendedora_v1; part: xc7a35tcpg236-1
+dismissDialog("Open Project"); // bA
+// Tcl Message: update_compile_order -fileset sources_1 
+// PAPropertyPanels.initPanels (main.vhd) elapsed time: 0.2s
+// Elapsed time: 101 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, main(arq_main) (main.vhd)]", 1, true); // D - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, main(arq_main) (main.vhd)]", 1); // D
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // D
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >"); // JButton
+selectButton(PAResourceQtoS.SrcChooserPanel_CREATE_FILE, "Create File"); // a
+// Elapsed time: 10 seconds
+setText(PAResourceAtoD.CreateSrcFileDialog_FILE_NAME, "estados_dispensador"); // aa
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Create Source File"); // F
+selectButton("FINISH", "Finish"); // JButton
+// 'g' command handler elapsed time: 17 seconds
+dismissDialog("Add Sources"); // c
+// Tcl Message: close [ open D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new/estados_dispensador.vhd w ] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new/estados_dispensador.vhd 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// HMemoryUtils.trashcanNow. Engine heap size: 1,502 MB. GUI used memory: 68 MB. Current time: 11/17/23, 8:19:36 AM GMT-06:00
+selectButton("OptionPane.button", "Yes"); // JButton
+// TclEventType: FILE_SET_CHANGE
+dismissDialog("Define Module"); // I
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, estados_dispensador(Behavioral) (estados_dispensador.vhd)]", 9, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, estados_dispensador(Behavioral) (estados_dispensador.vhd)]", 9, false, false, false, false, false, true); // D - Double Click
+// [GUI Memory]: 126 MB (+2965kb) [00:03:17]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,507 MB. GUI used memory: 68 MB. Current time: 11/17/23, 8:20:16 AM GMT-06:00
+// HMemoryUtils.trashcanNow. Engine heap size: 1,507 MB. GUI used memory: 67 MB. Current time: 11/17/23, 8:20:46 AM GMT-06:00
+// HMemoryUtils.trashcanNow. Engine heap size: 1,507 MB. GUI used memory: 67 MB. Current time: 11/17/23, 8:21:16 AM GMT-06:00
+// HMemoryUtils.trashcanNow. Engine heap size: 1,507 MB. GUI used memory: 68 MB. Current time: 11/17/23, 8:22:46 AM GMT-06:00

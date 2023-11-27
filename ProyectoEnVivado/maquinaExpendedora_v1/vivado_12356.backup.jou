@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 17 08:16:44 2023
+# Process ID: 12356
+# Current directory: D:/Users/178633/Desktop/maquinaExpendedora_v1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21600 D:\Users\178633\Desktop\maquinaExpendedora_v1\maquinaExpendedora_v1.xpr
+# Log file: D:/Users/178633/Desktop/maquinaExpendedora_v1/vivado.log
+# Journal file: D:/Users/178633/Desktop/maquinaExpendedora_v1\vivado.jou
+# Running On: PCCN111-04, OS: Windows, CPU Frequency: 3000 MHz, CPU Physical cores: 8, Host memory: 16943 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.xpr
+update_compile_order -fileset sources_1
+close [ open D:/Users/178633/Desktop/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new/estados_dispensador.vhd w ]
+add_files D:/Users/178633/Desktop/maquinaEreset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+reset_run synth_1
+e_compile_order -fileset sources_1
