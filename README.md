@@ -292,6 +292,8 @@ The process of dividing the number into ones and tens is done within a process b
  
 For each BCD digit (units and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
 
+[Back to Top](#top)
+
 ## Demultiplexer to show numbers on display
 
 The code shown is a demultiplexer (demux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state). As we used a frequency clock of 1000 Hz represents that every 0.001 seconds or every milisecond the clock change, so every 2 ms each of the four 7-segment displays is activated
