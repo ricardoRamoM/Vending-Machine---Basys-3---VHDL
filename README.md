@@ -14,7 +14,7 @@ This project consists of a vending machine capable of offering 5 products of dif
 Subsequently, a purchase confirmation button was incorporated, the option to provide change and the display of the total change on two 7-segment displays. These additions allow the user to confirm the purchase, receive the corresponding change, and view the total amount of change in the vending machine.
 
 
-The Basys 3 is an FPGA (Field Programmable Gate Array) board and stands as one of the most recommended and utilized tools for student training in system development through hardware description. In this project, the internal simulation of a candy vending machine will be carried out, aiming to receive money, dispense the product, and, if necessary, provide change. Prior to this stage, a thorough analysis of the development of a sequential design in VHDL will be conducted, specifically tailored for the Basys 3 board. This analysis will be performed using the EDA Playground development environment in collaboration with the Vivado 2018.2 plugin developed by Xilinx, Inc. To implement the design code for the Basys 3 board, we will use the Vivado 2018.2 software.
+The Basys 3 is an FPGA (Field Programmable Gate Array) board and stands as one of the most recommended and utilized tools for student training in system development through hardware description. In this project, the internal simulation of a candy vending machine will be carried out, aiming to receive money, dispense the product, and, if necessary, provide change. Prior to this stage, a thorough analysis of the development of a sequential design in VHDL will be conducted, specifically tailored for the Basys 3 board. This analysis will be performed using the EDA Playground development environment in collaboration with the Vivado 2022.2 plugin developed by Xilinx, Inc. To implement the design code for the Basys 3 board, we will use the Vivado 2022.2 software.
 
   
   
@@ -55,7 +55,7 @@ To run this project you need the following components:
 
 # VHDL Code Development
 
-In this section, the codes that compose this project will be described. All codes can be founded on the "CODES" folder of this repository.
+In this section, the codes that compose this project will be described. All codes of VHDL can be founded on the "CODES VHDL" folder of this repository. 
 
 ## Main Code
 
@@ -75,41 +75,41 @@ Outputs (out):
  
 -	LEDS: When the purchase is made (the money deposited is equal to or greater than the value of the product), they will be activated in a cascade to inform you that the product has been dispensed.
  
--	seg_display: Output that represents the segments of a seven-segment display.
+-	seg_display: Output that represents the segments ('a' to 'g') of a seven-segment display.
  
--	select_display: Output indicating which digit should be shown on the seven-segment display.
+-	select_display: Output indicating which of the four displays should be turn on.
  
 Modules and Submodules:
  
 -	Frequency Dividers (div_freq):
-Generates several clocks divided from the main frequency (clk100Mhz).
-They are used to create several clocks of different frequencies for different modules.
+Generates several clocks divided from the main frequency provided by the clock integrated in the Basys 3 with a frequency of 100 MHz (clk100Mhz).
+They are used to create several clocks of different frequencies for different modules. 
  
  
 - Debouncer (debouncer):
- Used to debounce button signals (UP, DOP, CP, DP, RST, BUY_CONF).
+ Used to prevent button or switches signals from bouncing. (UP, DOP, CP, DP, RST, BUY_CONF).
 Provides debounced (UP_IN_SIN_REB, DOP_IN_SIN_REB, etc.) and pulsed signals.
  
  
 - Money Adder (money_sum):
- Add up the money received based on the buttons pressed and monitor the status of the system.
+ Add up the money received based on the switches activated and monitor the status of the system.
 Generates signals such as sign_DineroRecibido and sign_RecibeMinero.
  
  - Number Divisor for Display (divNum_Uni_Dec):
- Divides the number of money, change and price into digits for display on seven-segment displays.
+ Divides the number of money, change and price in a decimal form into digits for display on two seven-segment displays.
  
  - Product Selector (select_product):
- Controls product selection and obtains the price of the selected product.
+ Controls the selection of one of the five products and obtains the price of the selected product and the "product_selected" signal that tells you that a product is selected.
  
  - Dispenser States (dispenser_states):
- Control the status of the dispenser based on product selection, confirmation and money received.
+ Control the status of the dispenser based on the money received and price of the selected product, and the signal "product_selected".
  Generates control signals such as signal_Dispense_out and signal_Give_change_out.
  
  - GetChange (get_change):
  Calculates the change that must be delivered to the user.
  
  - Show Dispense LEDs (show_dispense_leds):
- Controls the LED display based on the dispensing status and purchase confirmation.
+ Controls the LEDs based on the dispensing status and purchase confirmation.
 
 - Display demultiplexer (demux_display):
  Controls the display on the seven-segment display depending on the system status.
@@ -118,15 +118,19 @@ Workflow:
  
 -	The code uses multiple split clocks to synchronize different parts of the system.
  
--	The debouncer is used to clean up button signals.
+- The debouncer is used to clear signals from buttons and switches.
  
--	The money adder manages the money received and controls the delivery of products and exchange.
+-	The money adder manages the money received.
  
--	The product selector gets the price of the selected product.
+-	The product selector obtains the price of the selected product and the signal that indicates that a product was selected.
+
+- The change module obtains the change that the vending machine has to give.
  
--	The status of the dispenser and the change module control the workflow for dispensing products and change.
- 
--	The display modules control the presentation on LEDs and seven-segment displays.
+- The status of the dispenser controls the authorization of product delivery and change.
+  
+-	The demux display module control what is shown in the four seven-segment displays based on the status of the vending machine.
+
+- The show dispense LEDs module activates or deactivates the cascade presentation of the LEDs.
 
 
 ## Frequency Divider
@@ -135,7 +139,14 @@ The code is divided into two processes, gen_clock and persecond. The gen_clock p
 
 The persecond process simply takes the split clock value (clk_state) and assigns it to the clkSplit output signal.
 
-This design has the advantage that the frequency of clkDivided can be easily changed by simply changing the value of max_count. Additionally, using an event-based account ensures that the split clock has a consistent, well-defined period, which is useful for controlling devices.
+This design has the advantage that the frequency of clkDivided can be easily changed by simply changing the value of max_count. 
+To calculate the max_count we need to divided the original clock with frecuency of 100Mhz by the required frecuency, or if you just know how many seconds do you want the clock signal to last you need to divided the original frequency by one over the seconds you want.
+
+<p align="center">
+  <img src="Imagenes/max_count.png" alt="Image Open" style="width:30%;"> 
+</p>
+
+Additionally, using an event-based account ensures that the split clock has a consistent, well-defined period, which is useful for controlling devices.
 
 The code also includes a reset to reset the counter and split clock signal at any time.
 
@@ -155,21 +166,23 @@ The output "counter_out_int" is an integer representing the current value of the
 
 The code defines a counter that counts up to the maximum value allowed by N bits and resets itself when this value is reached. It can also be enabled and disabled using the "count_enable" signal. The output of the counter is an N-bit vector and an integer. 
 
-The "terminal_count" signal is activated when the counter reaches its maximum value.
+The "terminal_count" signal is activated when the counter reaches its maximum value. This code is used in the function of the debouncer.
 
-## Demultiplexer to show numbers on display
+## Debouncer
 
-The circuit shown is a multiplexer (mux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state).
-
-The mux has 4 outputs, which represent the 4 displays in the circuit. To determine which display should be turned on, a process based on a counter is used that runs through all possible state values.
-
-The "show_display" process uses a sequence of 16 possible values for the state, which are divided into 4 substates of 4 values each. Each substate represents a different state that the mux must be in to control which display should turn on.
-
-The mux also uses a register called "display_sel" to store the current display selection. The "curr_display" signal is used to send this information to the outside of the mux.
-
-Additionally, the "show_display" process uses a set of case instructions to determine which values should be shown on the displays based on the current display selection and other input signals (Confirm_purchase_IN).
-
-Finally, it is worth mentioning that the circuit design is based on a multiplexer with a minimum of components, which facilitates its implementation and reduces costs. However, the use of a register and a counter also involves some consumption of additional resources in terms of time and area.
+This code defines a debouncer module that uses a shift register and a counter to slow down the button read. The debounce logic is based on detecting when the shift register contains only '1'.
+ 
+A "counterNbits" component is used to count the number of clock cycles since the button was last read. This component is initialized with a 20-bit counter.
+ 
+On each clock cycle, the shift register is updated to store the current state of the button and the previous 7 states.
+ 
+If the shift register contains only '1', then the button is considered stable and the module sends a pulse to the "btn_out_reg" output.
+ 
+The "debouncer" module has two flip-flops (ffl and ff2) to store the current state and the previous state of "btn_out_reg". This is used to detect transitions in the button state.
+ 
+The "btn_pulsed" output is activated when there is a transition in the button state (from 0 to 1). This is achieved by applying the "and" operation between the current and previous states of "btn_out_reg" (ffl and ff2, respectively).
+ 
+The "debouncer" module is designed to work with clocks up to 100 MHz and is capable of handling high-speed transitions on the button.
 
 ## Adder
 The sum of money is a module that counts the coins received at a dispenser. To implement this module, we must first create a record that stores the amount of money received so far.
@@ -229,22 +242,6 @@ The process of dividing the number into ones and tens is done within a process b
  
 For each BCD digit (ones and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
 
-## Debouncer
-
-This code defines a debouncer module that uses a shift register and a counter to slow down the button read. The debounce logic is based on detecting when the shift register contains only '1'.
- 
-A "counterNbits" component is used to count the number of clock cycles since the button was last read. This component is initialized with a 20-bit counter.
- 
-On each clock cycle, the shift register is updated to store the current state of the button and the previous 7 states.
- 
-If the shift register contains only '1', then the button is considered stable and the module sends a pulse to the "btn_out_reg" output.
- 
-The "debouncer" module has two flip-flops (ffl and ff2) to store the current state and the previous state of "btn_out_reg". This is used to detect transitions in the button state.
- 
-The "btn_pulsed" output is activated when there is a transition in the button state (from 0 to 1). This is achieved by applying the "and" operation between the current and previous states of "btn_out_reg" (ffl and ff2, respectively).
- 
-The "debouncer" module is designed to work with clocks up to 100 MHz and is capable of handling high-speed transitions on the button.
-
 ## Dispenser States
 
 This code represents an FSM (Finite State Machine) that controls the states of a dispenser.
@@ -277,6 +274,20 @@ The provided code implements a circuit that determines the value of change that 
  
 When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (accumulatedmoney) and the price of the product (Productprice). This value is then stored in the "change_value" signal.
 
+## Demultiplexer to show numbers on display
+
+The circuit shown is a multiplexer (mux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state).
+
+The mux has 4 outputs, which represent the 4 displays in the circuit. To determine which display should be turned on, a process based on a counter is used that runs through all possible state values.
+
+The "show_display" process uses a sequence of 16 possible values for the state, which are divided into 4 substates of 4 values each. Each substate represents a different state that the mux must be in to control which display should turn on.
+
+The mux also uses a register called "display_sel" to store the current display selection. The "curr_display" signal is used to send this information to the outside of the mux.
+
+Additionally, the "show_display" process uses a set of case instructions to determine which values should be shown on the displays based on the current display selection and other input signals (Confirm_purchase_IN).
+
+Finally, it is worth mentioning that the circuit design is based on a multiplexer with a minimum of components, which facilitates its implementation and reduces costs. However, the use of a register and a counter also involves some consumption of additional resources in terms of time and area.
+
 ## Confirm purchase with LEDS
 
 This code is responsible for displaying a bit pattern on LEDs after confirming a purchase.
@@ -304,7 +315,7 @@ https://edaplayground.com/x/BD4G
 
 In order to implement this project on a Basys 3, you must use the Vivado software.
 
-In our case, we use version 2018.2 (This is the one in which the project is located in the folder), so if you want to directly open the project, you will need that version.
+In our case, we use version 2022.2 (This is the one in which the project is located in the folder), so if you want to directly open the project, you will need that version.
 
 If you want to use another version, just start a new project and configure it in the usual way, and when adding the design sources, simply add the shared VHDL codes.
 
