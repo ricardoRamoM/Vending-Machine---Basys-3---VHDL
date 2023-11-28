@@ -343,11 +343,13 @@ In our case, we use version 2022.2 (This is the one in which the project is loca
 
 If you want to use another version, just start a new project and configure it in the usual way, and when adding the design sources, simply add the shared VHDL codes.
 
+For convenience, you can simply download the project and open the file "maquinaExpendedora_v1.xpr" located in [ProjectVivado/maquinaExpendedora_v1](https://github.com/ricardoRamoM/Vending-Machine-Basys-3-VHDL/blob/master/ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.xpr) in the Vivado software, where there are all the vhdl files located in [ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new](https://github.com/ricardoRamoM/Vending-Machine-Basys-3-VHDL/tree/master/ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/sources_1/new) and the constrains file is located in [ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/constrs_1/new](https://github.com/ricardoRamoM/Vending-Machine-Basys-3-VHDL/blob/master/ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/constrs_1/new/basys-3-Master-final.xdc). You just need to run the program in the Basys 3.
+
 ### XDC Configuration
 
 In order to indicate to the FPGA which components it will use, a constrain file, in the XDC format, must be used.
 
-For convenience, you can simply add the shared XDC to the code folder.
+You can simply add the shared XDC to the [constrains folder](https://github.com/ricardoRamoM/Vending-Machine-Basys-3-VHDL/blob/master/ProjectVivado/maquinaExpendedora_v1/maquinaExpendedora_v1.srcs/constrs_1/new).
 
 But if you want to do it manually, you must follow the following steps:
 
