@@ -27,15 +27,15 @@ The Basys 3 is an FPGA (Field Programmable Gate Array) board and stands as one o
   - [Main](#main-code)
   - [Frequency Divider](#frequency-divider)
   - [Counter from 0 to N bits](#counter-from-0-to-N-bits)
-  - [Demultiplexer to show numbers on display](#demultiplexer-to-show-numbers-on-display)
+  - [Debouncer](#Debouncer)
   - [Adder](#Adder)
   - [Product Selector](#Product-Selector)
-  - [Decimal to display 7 segments of the tens](#Decimal-to-display-7-segments-of-the-tens)
-  - [Decimal to display 7 segments of units](#Decimal-to-display-7-segments-of-units)
-  - [Divide number into tens and units](#Divide-number-into-tens-and-units)
-  - [Debouncer](#Debouncer)
-  - [Dispenser States](#Dispenser-States)
   - [Change Delivery](#Change-Delivery)
+  - [Dispenser States](#Dispenser-States)
+  - [Decimal to display 7 segments of units](#Decimal-to-display-7-segments-of-units)
+  - [Decimal to display 7 segments of the tens](#Decimal-to-display-7-segments-of-the-tens)
+  - [Divide number into tens and units](#Divide-number-into-tens-and-units)
+  - [Demultiplexer to show numbers on display](#demultiplexer-to-show-numbers-on-display)
   - [Confirm purchase with LEDS](#Confirm-purchase-with-LEDS)
 - [Validation of the EDA Playground Testbench](#validation-of-the-eda-playground-testbench)
 - [Extra Configurations](#extra-configurations)
@@ -212,35 +212,11 @@ When a product is selected, the "product_selected" signal is activated and the p
  
 When the CONFIRM_BUY signal is activated, the product is deselected and the values of the "product_selected" and "product_price" signals are reset.
 
-## Decimal to display 7 segments of the tens
+## Change Delivery
 
-The code is a VHDL module that implements a converter from BCD to 7 tens segments. The Behavioral architecture of the module contains a process that performs the conversion according to the BCD-7Seg encoding pattern.
+The provided code implements a circuit that determines the value of change that should be returned to the user after purchasing a product. This circuit is based on a process that is executed on each edge rise of the clock.
  
-The bcd7seg_dec entity has a single input port dec, which receives an integer between 0 and 9. This number represents the ten to be converted.
- 
-The output port dec_segments is a 7-bit vector output, which represents the 7-segment representation of the tens of the entered number.
- 
-The module's internal process uses a local variable segments of type std_logic_vector (6 downto 0) to store the conversion result. The conversion is performed using a case statement that evaluates the entered value and assigns the corresponding value to the segments variable.
- 
-Finally, the process maps each bit of the segments vector to the output port segments_dec, thus completing the implementation of the module.
-
-## Decimal to display 7 segments of units
-
-The code provided defines a component "bcd7seg_uni" that takes an integer from 0 to 9 as input and returns a 7-bit vector representing the activation of each segment on the 7-segment display.
- 
-The component logic is implemented within a process block that is executed every time the value of the integer changes. Within the process block, a "segments" variable declaration is used to store the bit pattern that represents the activation of each segment on the 7-segment display.
- 
-A "case" statement is then used to determine the bit pattern that corresponds to the input integer. Each branch of the case assigns a bit pattern to the segments variable.
- 
-Finally, the bits of the "segments" variable are connected to the output terminals of the component. This allows the bit pattern representing the activation of each segment on the 7-segment display to be transmitted outside the component.
-
-## Divide number into tens and units
-
-The code you provided divides a number into two digits, ones and tens. These digits are converted to BCD numbers and displayed on the corresponding 7-segment displays.
- 
-The process of dividing the number into ones and tens is done within a process block, which is executed every time the value of the number changes. The process block checks to see if the number is 0, in which case the ones and tens are set to 0. If the number is not 0, the ones and tens are obtained using the modulo operation and division.
- 
-For each BCD digit (ones and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
+When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (accumulatedmoney) and the price of the product (Productprice). This value is then stored in the "change_value" signal.
 
 ## Dispenser States
 
@@ -268,17 +244,41 @@ The states and their transitions are defined in the table of the following logic
  
 This code implements a simple FSM that can be extended and adapted to different applications. However, it should be noted that the code only shows a theoretical and conceptual approach to the circuit design, and does not provide information on how to physically implement the circuit on an FPGA or other type of hardware device.
 
-## Change Delivery
+## Decimal to display 7 segments of units
 
-The provided code implements a circuit that determines the value of change that should be returned to the user after purchasing a product. This circuit is based on a process that is executed on each edge rise of the clock.
+The code provided defines a component "bcd7seg_uni" that takes an integer from 0 to 9 as input and returns a 7-bit vector representing the activation of each segment on the 7-segment display.
  
-When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (accumulatedmoney) and the price of the product (Productprice). This value is then stored in the "change_value" signal.
+The component logic is implemented within a process block that is executed every time the value of the integer changes. Within the process block, a "segments" variable declaration is used to store the bit pattern that represents the activation of each segment on the 7-segment display.
+ 
+A "case" statement is then used to determine the bit pattern that corresponds to the input integer. Each branch of the case assigns a bit pattern to the segments variable.
+ 
+Finally, the bits of the "segments" variable are connected to the output terminals of the component. This allows the bit pattern representing the activation of each segment on the 7-segment display to be transmitted outside the component.
+
+## Decimal to display 7 segments of the tens
+
+The code is a VHDL module that implements a converter from BCD to 7 tens segments. The Behavioral architecture of the module contains a process that performs the conversion according to the BCD-7Seg encoding pattern.
+ 
+The bcd7seg_dec entity has a single input port dec, which receives an integer between 0 and 9. This number represents the ten to be converted.
+ 
+The output port dec_segments is a 7-bit vector output, which represents the 7-segment representation of the tens of the entered number.
+ 
+The module's internal process uses a local variable segments of type std_logic_vector (6 downto 0) to store the conversion result. The conversion is performed using a case statement that evaluates the entered value and assigns the corresponding value to the segments variable.
+ 
+Finally, the process maps each bit of the segments vector to the output port segments_dec, thus completing the implementation of the module.
+
+## Divide number into tens and units on two seven-segment displays 
+
+The code you provided divides a number into two digits, ones and tens. These digits are converted to BCD numbers and displayed on the corresponding 7-segment displays.
+ 
+The process of dividing the number into ones and tens is done within a process block, which is executed every time the value of the number changes. The process block checks to see if the number is 0, in which case the ones and tens are set to 0. If the number is not 0, the ones and tens are obtained using the modulo operation and division.
+ 
+For each BCD digit (ones and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
 
 ## Demultiplexer to show numbers on display
 
 The circuit shown is a multiplexer (mux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state).
 
-The mux has 4 outputs, which represent the 4 displays in the circuit. To determine which display should be turned on, a process based on a counter is used that runs through all possible state values.
+The demux has 4 outputs, which represent the 4 displays in the circuit. To determine which display should be turned on, a process based on a counter is used that runs through all possible state values.
 
 The "show_display" process uses a sequence of 16 possible values for the state, which are divided into 4 substates of 4 values each. Each substate represents a different state that the mux must be in to control which display should turn on.
 
