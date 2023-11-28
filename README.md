@@ -9,7 +9,13 @@
 <p align="center">This is a simulation of the behavior for the hardware of a vending machine in VHDL.
 
 ## Project Overview
+This project consists of a vending machine capable of offering 5 products of different values and that can receive 4 types of coins (1, 2, 5, 10 MXN). The system of a Basys 3 is designed to help us show the amount of money inserted through two 7-segment displays. A sequential circuit has been implemented to control the operation of the machine.
+ 
+Subsequently, a purchase confirmation button was incorporated, the option to provide change and the display of the total change on two 7-segment displays. These additions allow the user to confirm the purchase, receive the corresponding change, and view the total amount of change in the vending machine.
+
+
 The Basys 3 is an FPGA (Field Programmable Gate Array) board and stands as one of the most recommended and utilized tools for student training in system development through hardware description. In this project, the internal simulation of a candy vending machine will be carried out, aiming to receive money, dispense the product, and, if necessary, provide change. Prior to this stage, a thorough analysis of the development of a sequential design in VHDL will be conducted, specifically tailored for the Basys 3 board. This analysis will be performed using the EDA Playground development environment in collaboration with the Vivado 2018.2 plugin developed by Xilinx, Inc. To implement the design code for the Basys 3 board, we will use the Vivado 2018.2 software.
+
   
   
   
@@ -242,6 +248,16 @@ The "debouncer" module is designed to work with clocks up to 100 MHz and is capa
 ## Dispenser States
 
 This code represents an FSM (Finite State Machine) that controls the states of a dispenser.
+
+To express the FSM, we use the next diagram:
+
+<p align="center">
+  <img src="Imagenes/FSM.png" alt="Image Open" style="width:30%;"> 
+</p>
+
+The explanation is the next one:
+
+The state machine changes state whenever a product selection is read, this occurs when selecting a switch of the products. In the “state_Wait” state, the signal for dispensing a product and giving change is set to zero. On the other hand, in the state "state_P_Select" means that there is a selected product and in that state, depending on the money entered and the value of the product, the signals to dispense and give change will be sent depending on whether it is enough, if it exceeds or if it lacks money for The dispense and change signal serves to activate other sections of the code depending on what needs to be done.
  
 The code is organized into different logical blocks: STATE_MEMORY, NEXT_STATE_LOGIC and OUTPUT_LOGIC.
  
@@ -436,9 +452,9 @@ Ricado Ramos Morales - ricardo.ramosms@udlap.mx - Github: ricardoRamoM
 
 Adriel Ivann Ferrer Alejo - adriel.ferrerao@udlap.mx - Github: IvannFerrer 
 
-Irving Alejandro Vásquez Salinas - irving.vasquezss@udlap.mx - IrvingVasquez3
+Irving Alejandro Vásquez Salinas - irving.vasquezss@udlap.mx - Github: IrvingVasquez3
 
-Project Link: 
+Project Link: https://github.com/IrvingVasquez3/VENDING-MACHINE
 
 
 # And remember... Enjoy, entertain, and improve: Motivate yourself, design and program!
