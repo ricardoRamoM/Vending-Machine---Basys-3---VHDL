@@ -193,11 +193,11 @@ The "debouncer" module is designed to work with clocks up to 100 MHz and is capa
 ## Adder
 The sum of money is a module that counts the coins received at a dispenser. To implement this module, we must first create a record that stores the amount of money received so far.
 
-The "prev_currency" register is updated every time a currency is detected. The variables UP_IN, DOP_IN, CP_IN and DP_IN are used to detect the receipt of coins. When a coin is detected, the "prev_currency" register is incremented by 1, 2, 5, or 10, depending on the coin that was received.
+The "moneda_prev" register is updated every time a coin is inserted by one of the four switches that represents them. The variables UP_IN, DOP_IN, CP_IN and DP_IN are used to detect the receipt of coins. When a coin is detected, the "moneda_prev" register is incremented by 1, 2, 5, or 10, depending on the coin that was received.
 
-The "DineroReci" signal is used to inform the rest of the system of the amount of money received. This signal is an-output of the module.
+The "DineroReci" signal is used to inform the rest of the system of the total amount of money received as an integer. This signal is an-output of the module.
 
- The "ReceiveMoney" signal is an-output that indicates whether money has been received or not. It is set to '1' when a coin is detected and reset to '0' when no coin is detected.
+ The "RecibeDinero" signal is an-output that indicates whether money has been received or not. It is set to '1' when coins are detected and reset to '0' when no coin is detected or also when the Confirm button is activated.
  
 Additionally, an additional signal "RST_IN" is used to reset the money counter. When "RST_IN" is '1', the money counter is reset to 0.
 
@@ -460,7 +460,7 @@ For the VHDL compiler, you can use this website to work on it :
 
 https://edaplayground.com/
 
-For the testbench online, acess this link:
+For the testbench online, access this link:
 
 https://edaplayground.com/x/R4By
 
@@ -475,6 +475,10 @@ https://digilent.com/reference/programmable-logic/basys-3/reference-manual
 Also, other source where more information about VHDL configuration can be found is the the following book:
 
 https://issuu.com/umbrella12/docs/2019_book_quickstartguidetovhdl
+
+If you want to install Vivado:
+
+https://www.xilinx.com/support/download.html
 
 To be able to see a video of its operation on the Basys 3:
 
