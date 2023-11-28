@@ -132,6 +132,7 @@ Workflow:
 
 - The show dispense LEDs module activates or deactivates the cascade presentation of the LEDs.
 
+[Back to Top](#top)
 
 ## Frequency Divider
 
@@ -150,6 +151,8 @@ Additionally, using an event-based account ensures that the split clock has a co
 
 The code also includes a reset to reset the counter and split clock signal at any time.
 
+[Back to Top](#top)
+
 ## Counter from 0 to N bits
 
 The code is an N-bit counter in VHDL.
@@ -163,10 +166,11 @@ When the counter reaches the maximum value allowed by N bits (2^N - 1), an outpu
 The output "counter_out" is an N-bit vector representing the current value of the counter.
 The output "counter_out_int" is an integer representing the current value of the counter.
 
-
 The code defines a counter that counts up to the maximum value allowed by N bits and resets itself when this value is reached. It can also be enabled and disabled using the "count_enable" signal. The output of the counter is an N-bit vector and an integer. 
 
 The "terminal_count" signal is activated when the counter reaches its maximum value. This code is used in the function of the debouncer.
+
+[Back to Top](#top)
 
 ## Debouncer
 
@@ -183,6 +187,8 @@ The "debouncer" module has two flip-flops (ffl and ff2) to store the current sta
 The "btn_pulsed" output is activated when there is a transition in the button state (from 0 to 1). This is achieved by applying the "and" operation between the current and previous states of "btn_out_reg" (ffl and ff2, respectively).
  
 The "debouncer" module is designed to work with clocks up to 100 MHz and is capable of handling high-speed transitions on the button.
+
+[Back to Top](#top)
 
 ## Adder
 The sum of money is a module that counts the coins received at a dispenser. To implement this module, we must first create a record that stores the amount of money received so far.
@@ -205,6 +211,8 @@ The buttons on the machines register the following data:
 - CP_IN – Five pesos
 - DP_IN – Ten pesos
 
+[Back to Top](#top)
+
 ## Product Selector
 The code of the "select_product" entity is responsible for reading and saving the product that the user wishes to choose. The entity takes 6 input signals (PRODUCT_1 to PRODUCT_5 and CONFIRM_BUY) and generates 2 output signals (product_selected and product_price).
  
@@ -212,11 +220,15 @@ When a product is selected, the "product_selected" signal is activated and the p
  
 When the CONFIRM_BUY signal is activated, the product is deselected and the values of the "product_selected" and "product_price" signals are reset.
 
+[Back to Top](#top)
+
 ## Change Delivery
 
 The provided code implements a circuit that determines the value of change that should be returned to the user after purchasing a product. This circuit is based on a process that is executed on each edge rise of the clock.
  
 When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (accumulatedmoney) and the price of the product (Productprice). This value is then stored in the "change_value" signal.
+
+[Back to Top](#top)
 
 ## Dispenser States
 
@@ -244,6 +256,8 @@ The states and their transitions are defined in the table of the following logic
  
 This code implements a simple FSM that can be extended and adapted to different applications. However, it should be noted that the code only shows a theoretical and conceptual approach to the circuit design, and does not provide information on how to physically implement the circuit on an FPGA or other type of hardware device.
 
+[Back to Top](#top)
+
 ## Decimal to display 7 segments of units
 
 The code provided defines a component "bcd7seg_uni" that takes an integer from 0 to 9 as input and returns a 7-bit vector representing the activation of each segment on the 7-segment display.
@@ -253,6 +267,8 @@ The component logic is implemented within a process block that is executed every
 A "case" statement is then used to determine the bit pattern that corresponds to the input integer. Each branch of the case assigns a bit pattern to the segments variable.
  
 Finally, the bits of the "segments" variable are connected to the output terminals of the component. This allows the bit pattern representing the activation of each segment on the 7-segment display to be transmitted outside the component.
+
+[Back to Top](#top)
 
 ## Decimal to display 7 segments of the tens
 
@@ -265,6 +281,8 @@ The output port dec_segments is a 7-bit vector output, which represents the 7-se
 The module's internal process uses a local variable segments of type std_logic_vector (6 downto 0) to store the conversion result. The conversion is performed using a case statement that evaluates the entered value and assigns the corresponding value to the segments variable.
  
 Finally, the process maps each bit of the segments vector to the output port segments_dec, thus completing the implementation of the module.
+
+[Back to Top](#top)
 
 ## Divide number into tens and units on two seven-segment displays 
 
@@ -288,6 +306,8 @@ Additionally, the "show_display" process uses a set of case instructions to dete
 
 Finally, it is worth mentioning that the circuit design is based on a multiplexer with a minimum of components, which facilitates its implementation and reduces costs. However, the use of a register and a counter also involves some consumption of additional resources in terms of time and area.
 
+[Back to Top](#top)
+
 ## Confirm purchase with LEDS
 
 This code is responsible for displaying a bit pattern on LEDs after confirming a purchase.
@@ -299,6 +319,8 @@ When the purchase is confirmed (Confirm_purchase_IN is high), it counts to 18, t
 The LEDs show an ascending bit pattern, achieving a cascade effect, where the LEDs turn off from the largest LED (15) to the smallest (0).
  
 When signal_endCount is high, LEDS is set to zero. 
+
+[Back to Top](#top)
   
 # Validation of the EDA Playground Testbench
 
