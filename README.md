@@ -437,6 +437,7 @@ If you used the QSPI configuration to save it in the internal memory of the FPGA
 
 Since we verify that the code is active (the green LED is on), all that remains is to try to enter money, select a product and confirm the purchase.
 
+Click on the image to see a video of it working on the Basys 3.
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=2hHGZxMNnmc"><img src="https://img.youtube.com/vi/2hHGZxMNnmc/0.jpg" alt="Video de Vending Machine"></a>
@@ -475,19 +476,22 @@ Also, other source where more information about VHDL configuration can be found 
 
 https://issuu.com/umbrella12/docs/2019_book_quickstartguidetovhdl
 
+To be able to see a video of its operation on the Basys 3:
+
+https://www.youtube.com/watch?v=2hHGZxMNnmc
 
 [Back to Top](#top)
 
 ## Contact 
 Authors:
 
-Ricado Ramos Morales - ricardo.ramosms@udlap.mx - Github: ricardoRamoM
+Ricado Ramos Morales - ricardo.ramosms@udlap.mx - Github: [ricardoRamoM](https://github.com/ricardoRamoM)
 
-Adriel Ivann Ferrer Alejo - adriel.ferrerao@udlap.mx - Github: IvannFerrer 
+Adriel Ivann Ferrer Alejo - adriel.ferrerao@udlap.mx - Github: [IvannFerrer](https://github.com/IvannFerrer)
 
-Irving Alejandro Vásquez Salinas - irving.vasquezss@udlap.mx - Github: IrvingVasquez3
+Irving Alejandro Vásquez Salinas - irving.vasquezss@udlap.mx - Github: [IrvingVasquez3](https://github.com/IrvingVasquez3)
 
-Project Link: https://github.com/IrvingVasquez3/VENDING-MACHINE
+Project Link: https://github.com/ricardoRamoM/Vending-Machine-Basys-3-VHDL
 
 
 # And remember... Enjoy, entertain, and improve: Motivate yourself, design and program!
