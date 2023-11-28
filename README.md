@@ -201,24 +201,24 @@ The "DineroReci" signal is used to inform the rest of the system of the total am
  
 Additionally, an additional signal "RST_IN" is used to reset the money counter. When "RST_IN" is '1', the money counter is reset to 0.
 
-Finally, a process is implemented that manages the flow of information. This process checks if a coin has been detected or the command to reset the money counter has been received. If a currency has been detected, the "prev_currency" register is incremented based on the currency that was received. If the command to reset the money counter has been received, the register "prev_currency" is reset to 0.
+Finally, a process is implemented that manages the flow of information. This process checks if a coin has been detected or the command to reset the money counter has been received. If a coin has been detected, the "moneda_prev" register is incremented based on the currency that was received. If the command to reset the money counter has been received or the Confirm button is activated, the register "moneda_prev" is reset to 0.
 
-In summary, the sum_money module counts the coins received at a dispenser. To do this, it uses a register to store the amount of money received and performs increment and reset operations based on input signals indicating the receipt of coins and the command to reset the money counter.
+In summary, the suma_dinero module counts the coins received at the dispenser. To do this, it uses a register to store the amount of money received and performs increment and reset operations based on input signals indicating the receipt of coins and the command to reset the money counter.
 The buttons on the machines register the following data:
 
-- UP_IN – One peso
-- DOP_IN – Two pesos
-- CP_IN – Five pesos
-- DP_IN – Ten pesos
+- UP_IN – Un peso ($1)
+- DOP_IN – Dos pesos ($2)
+- CP_IN – Cinco pesos ($5)
+- DP_IN – Diez pesos ($10)
 
 [Back to Top](#top)
 
 ## Product Selector
-The code of the "select_product" entity is responsible for reading and saving the product that the user wishes to choose. The entity takes 6 input signals (PRODUCT_1 to PRODUCT_5 and CONFIRM_BUY) and generates 2 output signals (product_selected and product_price).
+The code of the "seleccionar_producto" entity is responsible for reading and saving the product that the user wishes to choose. The entity takes 6 input signals (PRODUCT_1 to PRODUCT_5 and CONFIRMAR_COMPRA) and generates 2 output signals (product_selected and precio_producto).
  
-When a product is selected, the "product_selected" signal is activated and the price of the selected product is stored in the "product_price" signal.
+When a product is selected, the "product_selected" signal is activated and the price of the selected product is stored in the "precio_producto" signal.
  
-When the CONFIRM_BUY signal is activated, the product is deselected and the values of the "product_selected" and "product_price" signals are reset.
+When the CONFIRMAR_COMPRA signal is activated, the product is deselected and the values of the "product_selected" and "product_price" signals are reset.
 
 [Back to Top](#top)
 
@@ -226,13 +226,13 @@ When the CONFIRM_BUY signal is activated, the product is deselected and the valu
 
 The provided code implements a circuit that determines the value of change that should be returned to the user after purchasing a product. This circuit is based on a process that is executed on each edge rise of the clock.
  
-When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (accumulatedmoney) and the price of the product (Productprice). This value is then stored in the "change_value" signal.
+When the confirmation signal (Confirm) is activated ('1'), the circuit calculates the value of the change as the difference between the accumulated money (dineroAcumulado) and the price of the product (precioProducto). This value is then stored in the "valor_del_cambio" signal.
 
 [Back to Top](#top)
 
 ## Dispenser States
 
-This code represents an FSM (Finite State Machine) that controls the states of a dispenser.
+This code represents an FSM (Finite State Machine) that controls the states of a dispenser, in this case the machine es a Moore beacuse the outputs are in the states.
 
 To express the FSM, we use the next diagram:
 
@@ -286,25 +286,25 @@ Finally, the process maps each bit of the segments vector to the output port seg
 
 ## Divide number into tens and units on two seven-segment displays 
 
-The code you provided divides a number into two digits, ones and tens. These digits are converted to BCD numbers and displayed on the corresponding 7-segment displays.
+The code you provided divides an integer number into two digits, units and tens. These digits are converted to BCD numbers and displayed on the corresponding 7-segment displays by using the code of Decimal to display 7 segments of units and tens.
  
 The process of dividing the number into ones and tens is done within a process block, which is executed every time the value of the number changes. The process block checks to see if the number is 0, in which case the ones and tens are set to 0. If the number is not 0, the ones and tens are obtained using the modulo operation and division.
  
-For each BCD digit (ones and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
+For each BCD digit (units and tens), a "bcd7seg_uni" and "bcd7seg_dec" component is used respectively, which convert the BCD digit into a 7-bit vector that represents the activation of each segment on the 7-segment display.
 
 ## Demultiplexer to show numbers on display
 
-The circuit shown is a multiplexer (mux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state).
+The code shown is a demultiplexer (demux) that is responsible for controlling which display should turn on. This is achieved using a clock signal (clk1000hz) and a state signal (refresh_state). As we used a frequency clock of 1000 Hz represents that every 0.001 seconds or every milisecond the clock change, so every 2 ms each of the four 7-segment displays is activated
 
 The demux has 4 outputs, which represent the 4 displays in the circuit. To determine which display should be turned on, a process based on a counter is used that runs through all possible state values.
 
 The "show_display" process uses a sequence of 16 possible values for the state, which are divided into 4 substates of 4 values each. Each substate represents a different state that the mux must be in to control which display should turn on.
 
-The mux also uses a register called "display_sel" to store the current display selection. The "curr_display" signal is used to send this information to the outside of the mux.
+The demux also uses a register called "display_sel" to store the current display selection. The "curr_display" signal is used to send this information to the outside of the mux.
 
-Additionally, the "show_display" process uses a set of case instructions to determine which values should be shown on the displays based on the current display selection and other input signals (Confirm_purchase_IN).
+Additionally, the "show_display" process uses a set of case instructions to determine which values should be shown on the displays based on the current display selection and other input signals (Confirmar_compra_IN).
 
-Finally, it is worth mentioning that the circuit design is based on a multiplexer with a minimum of components, which facilitates its implementation and reduces costs. However, the use of a register and a counter also involves some consumption of additional resources in terms of time and area.
+Finally, it is worth mentioning that the circuit design is based on a demultiplexer with a minimum of components, which facilitates its implementation and reduces costs. However, the use of a register and a counter also involves some consumption of additional resources in terms of time and area.
 
 [Back to Top](#top)
 
@@ -314,7 +314,7 @@ This code is responsible for displaying a bit pattern on LEDs after confirming a
  
 Count starts when startCount is high and Confirm_Purchase_IN is also high.
  
-When the purchase is confirmed (Confirm_purchase_IN is high), it counts to 18, then activates signal_endCount and increases countNumber by 1.
+When the purchase is confirmed (Confirmar_compra_IN is high), it counts to 18, then activates signal_endCount and increases countNumber by 1.
  
 The LEDs show an ascending bit pattern, achieving a cascade effect, where the LEDs turn off from the largest LED (15) to the smallest (0).
  
@@ -444,6 +444,10 @@ Click on the image to see a video of it working on the Basys 3.
 </p>
 
 Now, you can try any combination you want.
+
+<p align="center">
+  <img src="Imagenes/Basys-3.png" alt="Image Open" style="width:50%;"> 
+</p>
 
 ## Future Improvements
 
